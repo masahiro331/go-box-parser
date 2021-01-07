@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	reader, err := vagrantcloud.GetBox("generic/alpine38", "3.1.20")
+	reader, err := vagrantcloud.GetBox("generic/alpine38", "3.1.20", vagrantcloud.Virtualbox)
 	if err != nil {
 		log.Fatal(err)
 	}

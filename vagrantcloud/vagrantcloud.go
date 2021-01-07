@@ -13,13 +13,15 @@ import (
 
 var urlFormat = "https://vagrantcloud.com/%s"
 
+type Provider string
+
 const (
 	// Providers
-	Parallels     = "parallels"
-	Hyperv        = "hyperv"
-	Libvirt       = "libvirt"
-	Virtualbox    = "virtualbox"
-	VmwareDesktop = "vmware_desktop"
+	Parallels     Provider = "parallels"
+	Hyperv        Provider = "hyperv"
+	Libvirt       Provider = "libvirt"
+	Virtualbox    Provider = "virtualbox"
+	VmwareDesktop Provider = "vmware_desktop"
 )
 
 type BoxJson struct {
@@ -50,7 +52,7 @@ boxName: centos/7
 version: 2004.01
 */
 
-func GetBox(boxName, version string) (io.ReadCloser, error) {
+func GetBox(boxName, version string, p Provider) (io.ReadCloser, error) {
 	addMimeType := func(r *requests.Request) {
 		r.Header.Add("Accept", "*/*")
 	}
@@ -69,7 +71,7 @@ func GetBox(boxName, version string) (io.ReadCloser, error) {
 	for _, v := range box.Versions {
 		if v.Version == version {
 			for _, provider := range v.Providers {
-				if provider.Name == Virtualbox {
+				if provider.Name == string(p) {
 					resp, err := requests.Get(provider.URL, addMimeType)
 					if err != nil {
 						return nil, errors.Errorf("failed to get box error: %w", err)
