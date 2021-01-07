@@ -1,0 +1,4 @@
+github.com/jochasinga/requests v0.0.0-20160909035013-af9bbdb4ab2c h1:cubwy2CjKIMYYk6s1BYy1ldNaR6DOoP/yiZ4K9Evk7w=
+github.com/jochasinga/requests v0.0.0-20160909035013-af9bbdb4ab2c/go.mod h1:pFstjdZQq8NNHzzPgLHX1ECbFxjbYYpc0+C+4UzRUiY=
+github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
+github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
